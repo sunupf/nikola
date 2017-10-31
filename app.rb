@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require './environments'
+require_relative './models/country'
+require_relative './models/degree'
+require_relative './models/document'
 require_relative './models/scholarship'
 
 get '/scholarships' do

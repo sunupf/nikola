@@ -10,16 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031064726) do
+ActiveRecord::Schema.define(version: 20171031213713) do
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name", limit: 100
+    t.string "region", limit: 25
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "degrees", force: :cascade do |t|
+    t.string "name", limit: 8
+    t.string "alias"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "scholarships", force: :cascade do |t|
-    t.string "title"
-    t.string "tuition"
+    t.string "title", limit: 255
+    t.string "tuition", limit: 10
     t.text "detail"
     t.datetime "deadline"
-    t.string "image_thumb"
-    t.string "image_original"
-    t.string "scholarship_url"
+    t.string "image_thumb", limit: 255
+    t.string "image_original", limit: 255
+    t.string "scholarship_url", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scholarships_countries", force: :cascade do |t|
+    t.integer "scholarship_id"
+    t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scholarships_degrees", force: :cascade do |t|
+    t.integer "scholarship_id"
+    t.integer "degree_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scholarships_docs", force: :cascade do |t|
+    t.integer "scholarship_id"
+    t.integer "document_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
