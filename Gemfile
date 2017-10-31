@@ -9,6 +9,7 @@ gem 'sinatra-redirect-with-flash'
 group :development do
     gem 'sqlite3'
     gem "tux"
+    gem "faker"
 end
 
 group :production do
