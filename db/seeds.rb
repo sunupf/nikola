@@ -4,9 +4,9 @@ Scholarship.destroy_all
 Document.destroy_all
 Degree.destroy_all
 Country.destroy_all
-Scholarship_document.destroy_all
-Scholarship_degree.destroy_all
-Scholarship_country.destroy_all
+ScholarshipDocument.destroy_all
+ScholarshipDegree.destroy_all
+ScholarshipCountry.destroy_all
 
 puts "All table has been truncated"
 
@@ -50,25 +50,26 @@ puts "Degree Inserted"
     )
 
     Document.all().each do |document|
-        Scholarship_document.create(
+        ScholarshipDocument.create(
             scholarship_id: scholarship["id"],
             document_id: document["id"]
         )
     end
 
     degree_count = [1,2,3].sample
-    choosen_countries = []
+    choosen_degrees = []
     degree_count.times do
-        country_id = Country.all.sample.id
-        if(!choosen_countries.include? country_id)
-            Scholarship_degree.create(
+        degree_id = Degree.all.sample.id
+        if(!choosen_degrees.include? degree_id)
+            choosen_degrees.push degree_id
+            ScholarshipDegree.create(
                 scholarship_id: scholarship["id"],
-                degree_id: country_id
+                degree_id: degree_id
             )
         end
     end
 
-    Scholarship_country.create(
+    ScholarshipCountry.create(
         scholarship_id: scholarship["id"],
         country_id: Country.all.sample.id
     )
