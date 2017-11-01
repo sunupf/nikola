@@ -5,6 +5,9 @@ require_relative './models/country'
 require_relative './models/degree'
 require_relative './models/document'
 require_relative './models/scholarship'
+require_relative './models/scholarship_document'
+require_relative './models/scholarship_degree'
+require_relative './models/scholarship_country'
 
 get '/scholarships' do
     scholarships = Scholarship.new().get_all
